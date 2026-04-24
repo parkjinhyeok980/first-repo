@@ -1,3 +1,4 @@
+# 최소 비용
 from heapq import heappush, heappop
 
 T = int(input())

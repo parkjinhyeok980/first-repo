@@ -1,3 +1,4 @@
+# 최소 이동 거리
 from collections import deque
 
 T = int(input())
