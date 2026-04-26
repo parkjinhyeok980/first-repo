@@ -1,7 +1,32 @@
-from heapq import heappush, heappop
-
 T = int(input())
+for tc in range(1, 1+T):
+    N, M = map(int, input().split())
+    arr = list(map(int, input().split()))
+    p = [i for i in range(1+N)]
 
-def prim(start_node):
-    pass
+    def find_set(x):
+        if x != p[x]:
+            p[x] = find_set(p[x])
+
+        return p[x]
+    
+    def union(x, y):
+        px = find_set(x)
+        py = find_set(y)
+
+        if px != py:
+            p[py] = px
+
+    for i in range(0, M*2, 2):
+        a = arr[i]
+        b = arr[i+1]
+
+        union(a, b)
+
+    groups = set()
+    for i in range(1, 1+N):
+        groups.add(find_set(i))
+
+    print(f"#{tc} {len(groups)}")
+
 
